@@ -18,18 +18,18 @@ function buttonFix() {
     let textArray = getText();
 
     textArray.forEach(function (element, index) {
-        let regN = /([A-Za-z])11|11(?=[A-Za-z])/g;
-
-        let firstElement = element.replace(/l1/g, "h").replace(regN, "n");
+        let regNa = /([A-Za-z])(11)(\D)/g;
+        let regNb = /11(?=[A-Za-z])/g;
+        let firstElement = element.replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
         let word = firstElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         
         if (textArray[index+1] != undefined) {
-            var nextElement = textArray[index + 1].replace(/l1/g, "h").replace(regN, "n");
+            var nextElement = textArray[index + 1].replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
             var nextWord = nextElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         }
 
         if (textArray[index+2] != undefined) {
-            var nNextElement = textArray[index + 2].replace(/l1/g, "h").replace(regN, "n");
+            var nNextElement = textArray[index + 2].replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
             var nNextWord = nNextElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         }
 
@@ -56,5 +56,5 @@ function buttonFix() {
         }
     });
     
-    console.log(dictionary.check("bio-monitor"));
+    console.log(dictionary.check("al2014This"));
 }
