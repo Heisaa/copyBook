@@ -1,0 +1,13 @@
+.textarea-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#buttonFix {
+    margin-top: 20px;
+}
