@@ -6,9 +6,9 @@ function getText() {
     let regNa = /([A-Za-z])(11)(\D)/g;
     let regNb = /11(?=[A-Za-z])/g;
     let regH = /l1/g;
-    text.replace(regNa,"$1n$3").replace(regNb,"$1n$3").replace(regH,"h");
+    let textReg = text.replace(regNa,"$1n$3").replace(regNb,"n").replace(regH,"h");
 
-    let textArray = text.split(" ");
+    let textArray = textReg.split(" ");
     return textArray;
 }
 
