@@ -1,7 +1,14 @@
 var dictionary = new Typo("en_US", false, false, { dictionaryPath: "Typo.js-master/typo/dictionaries" });
 
 function getText() {
-    let textArray = document.getElementById("input").value.split(" ");
+    let text = document.getElementById("input").value;
+
+    let regNa = /([A-Za-z])(11)(\D)/g;
+    let regNb = /11(?=[A-Za-z])/g;
+    let regH = /l1/g;
+    text.replace(regNa,"$1n$3").replace(regNb,"$1n$3").replace(regH,"h");
+
+    let textArray = text.split(" ");
     return textArray;
 }
 
@@ -18,18 +25,17 @@ function buttonFix() {
     let textArray = getText();
 
     textArray.forEach(function (element, index) {
-        let regNa = /([A-Za-z])(11)(\D)/g;
-        let regNb = /11(?=[A-Za-z])/g;
-        let firstElement = element.replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
+        
+        let firstElement = element;
         let word = firstElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         
         if (textArray[index+1] != undefined) {
-            var nextElement = textArray[index + 1].replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
+            var nextElement = textArray[index + 1];
             var nextWord = nextElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         }
 
         if (textArray[index+2] != undefined) {
-            var nNextElement = textArray[index + 2].replace(/l1/g, "h").replace(regNa, "$1n$3").replace(regNb, "n");
+            var nNextElement = textArray[index + 2];
             var nNextWord = nNextElement.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()"']/g,"");
         }
 
